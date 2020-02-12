@@ -145,7 +145,7 @@ CPU_ONLY:BOOL=ON
 
 12. Modify Caffeconfig.cmake
 ```
- open ~/caffe/build
+ open ~/caffe/build/Caffeconfig.cmake
 ```
 
 Find
