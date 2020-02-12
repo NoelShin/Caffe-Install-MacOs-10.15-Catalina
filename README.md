@@ -104,7 +104,7 @@ with
 ```
  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/Accelerate.framework/Versions/Current/Frameworks/vecLib.framework/Headers/
 ```
-**Note**
+**Note**  
 For those who use future version of macOS, i.e. higher than 10.15, you need to change **MacOSX10.15.sdk** part with your version. For example, MacOSX10.16.sdk for 10.16 version.  
 
 10. Pre-make
@@ -120,7 +120,8 @@ For those who use future version of macOS, i.e. higher than 10.15, you need to c
  open ~/caffe/build/CMakeCache.txt
 ```
 Edit as follows.  
-**Note** Please change package versions accordingly with yours.  
+**Note**  
+Please change package versions accordingly with yours.  
 You need to check both Python version and boost-python3 version.
 ```
 //Path to a program.
