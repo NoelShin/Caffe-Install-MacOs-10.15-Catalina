@@ -1,7 +1,7 @@
 # Caffe-Install-macOS-10.15-Catalina
-Caffe 1.0 version install on macOS 10.15 (Catalina) for cpu-only version.
-I refered to following guides which greatly helped to successfully install Caffe on my macOS.
-This repository aims to make Caffe installtaion easier by properly mixing advices from the guides.
+Caffe 1.0 version install on macOS 10.15 (Catalina) for cpu-only version.  
+I refered to following guides which greatly helped to successfully install Caffe on my macOS.  
+This repository aims to make Caffe installtaion easier by properly mixing advices from the guides.  
 
 1. https://www.dazhuanlan.com/2019/08/15/5d5514f5efcdc/
 2. https://github.com/reuank/caffe-macos-catalina
@@ -80,20 +80,21 @@ Open common.h file with text editor and copy-and-paste below command at line 72.
  open .
 ```
 
-Open Makefile.config with texteditor.
-Copy all lines in Makefile.config file in this repository to your Makefile.config file.
+Open Makefile.config with texteditor.  
+Copy all lines in Makefile.config file in this repository to your Makefile.config file.  
 
 **Note**
-If your Python version is different with 3.7.6_1, you need to revise these two lines in Makefile.config.
-Change the bold parts accordingly.
-For example, If your Python version is 3.6, then python3.7m and 3.7.6_1 should be replaced with python3.6m and 3.6.
+If your Python version is different with 3.7.6_1, you need to revise these two lines in Makefile.config.  
+Change the ** ** parts accordingly.  
+For example, If your Python version is 3.6, then python3.7m and 3.7.6_1 should be replaced with python3.6m and 3.6.  
 
 ```
 PYTHON_LIBRARIES := boost_python3 **python3.7m**
 PYTHON_INCLUDE := /usr/local/Cellar/python/**3.7.6_1**/Frameworks/Python.framework/Versions/3.7/include/python3.7m 
 			/usr/local/lib/python3.7/site-packages/numpy/core/include/numpy
 ```
-      
+
+
 
  
 
