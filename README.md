@@ -76,11 +76,9 @@ Open common.h file with text editor and copy-and-paste below command at line 72.
  
 9. Modify Makefile.config.
 ```
- cd ~/caffe
- open .
+ open ~/caffe/Makefile.config
 ```
 
-Open Makefile.config with texteditor.  
 Copy all lines in Makefile.config file in this repository to your Makefile.config file.  
 
 **Note**  
@@ -96,16 +94,15 @@ PYTHON_INCLUDE := /usr/local/Cellar/python/**3.7.6_1**/Frameworks/Python.framewo
 
 10. Modify FindvecLib.cmake file.
 ```
- open ~/caffe/cmake/Modules
+ open ~/caffe/cmake/Modules/FindvecLib.cmake
 ```
-Open FindvecLib.cmake file with texteditor.  
-Find 
 Change from 
-```${CMAKE_XCODE_DEVELOPER_DIR} to NO_DEFAULT_PATH)
+```
+ ${CMAKE_XCODE_DEVELOPER_DIR} to NO_DEFAULT_PATH)
 ```
 with
 ```
-/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/Accelerate.framework/Versions/Current/Frameworks/vecLib.framework/Headers/
+ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/Accelerate.framework/Versions/Current/Frameworks/vecLib.framework/Headers/
 ```
 **Note**
 For those who use future version of macOS, i.e. higher than 10.15, you need to change **MacOSX10.15.sdk** part with your version. For example, MacOSX10.16.sdk for 10.16 version.  
@@ -120,10 +117,9 @@ For those who use future version of macOS, i.e. higher than 10.15, you need to c
 
 11. Modify CMakeCache.txt file.  
 ```
- open ~/caffe/build
- 
+ open ~/caffe/build/CMakeCache.txt
 ```
-Open CMakeCache.txt file with texteditor and edit as follows.
+Edit as follows.  
 **Note** Please change package versions accordingly with yours.  
 You need to check both Python version and boost-python3 version.
 ```
