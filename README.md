@@ -21,7 +21,7 @@ This repository aims to make Caffe installtaion easier by properly mixing advice
  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
  
-3. Type following command in Terminal
+3. Type following command in Terminal.
 ```
  sudo chown -R $(whoami) $(brew --prefix)/*
 ```
@@ -74,7 +74,7 @@ Open common.h file with text editor and copy-and-paste below command at line 72.
  #define CV_LOAD_IMAGE_COLOR cv::IMREAD_COLOR
 ```
  
-9. Modify Makefile.config
+9. Modify Makefile.config.
 ```
  cd ~/caffe
  open .
@@ -83,7 +83,7 @@ Open common.h file with text editor and copy-and-paste below command at line 72.
 Open Makefile.config with texteditor.  
 Copy all lines in Makefile.config file in this repository to your Makefile.config file.  
 
-**Note**
+**Note**  
 If your Python version is different with 3.7.6_1, you need to revise these two lines in Makefile.config.  
 Change the ** ** parts accordingly.  
 For example, If your Python version is 3.6, then python3.7m and 3.7.6_1 should be replaced with python3.6m and 3.6.  
@@ -94,12 +94,96 @@ PYTHON_INCLUDE := /usr/local/Cellar/python/**3.7.6_1**/Frameworks/Python.framewo
 			/usr/local/lib/python3.7/site-packages/numpy/core/include/numpy
 ```
 
+10. Modify FindvecLib.cmake file.
+```
+ open ~/caffe/cmake/Modules
+```
+Open FindvecLib.cmake file with texteditor.  
+Find 
+Change from 
+```${CMAKE_XCODE_DEVELOPER_DIR} to NO_DEFAULT_PATH)
+```
+with
+```
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/Accelerate.framework/Versions/Current/Frameworks/vecLib.framework/Headers/
+```
+**Note**
+For those who use future version of macOS, i.e. higher than 10.15, you need to change **MacOSX10.15.sdk** part with your version. For example, MacOSX10.16.sdk for 10.16 version.  
 
+10. Pre-make
+```
+ cd ~/caffe
+ mkdir build
+ cd build
+ cmake ..
+```
 
+11. Modify CMakeCache.txt file.  
+```
+ open ~/caffe/build
  
+```
+Open CMakeCache.txt file with texteditor and edit as follows.
+**Note** Please change package versions accordingly with yours.  
+You need to check both Python version and boost-python3 version.
+```
+//Path to a program.
+PYTHON_EXECUTABLE:FILEPATH=/usr/local/bin/python3
 
+//Path to a file.
+PYTHON_INCLUDE_DIR:PATH=/usr/local/Cellar/python/3.7.6_1/Frameworks/Python.framework/Versions/3.7/include/python3.7m
 
+//Path to a library.
+PYTHON_LIBRARY:FILEPATH=/usr/local/Cellar/python/3.7.6_1/Frameworks/Python.framework/Versions/3.7/lib/libpython3.7m.dylib
 
+//Flags used by the CXX compiler during all build types.
+CMAKE_CXX_FLAGS:STRING=-std=c++11
+  
+//Boost python library (release)
+Boost_PYTHON_LIBRARY_RELEASE:FILEPATH=/usr/local/Cellar/boost-python3/1.72.0/lib/libboost_python37-mt.dylib
+  
+//Build Caffe without CUDA support
+CPU_ONLY:BOOL=ON
+```
 
+12. Modify Caffeconfig.cmake
+```
+ open ~/caffe/build
+```
 
+Find
+```
+ set(Caffe_CPU_ONLY OFF)
+```
+and replace with
+```
+ set(Caffe_CPU_ONLY ON)
+```
+
+13. Make Caffe again.
+```
+ cd ~/caffe/build
+ cmake ..
+ sudo make all
+ sudo make pycaffe
+```
+
+14. Export paths of Caffe module.
+If your default shell is zsh,
+```
+ open ~/.zshrc
+```
+
+else if it's bash
+```
+ open ~/.bash_profile
+```
+
+and type at the end of the file
+```
+ export PYTHONPATH=~/caffe/python:$PYTHONPATH
+ export PATH=~/caffe/build/tools:$PATH
+```
+
+Hope this works well! :)
 
