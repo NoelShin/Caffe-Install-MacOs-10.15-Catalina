@@ -83,14 +83,14 @@ Open common.h file with text editor and copy-and-paste below command at line 72.
 Open Makefile.config with texteditor.
 Copy all lines in Makefile.config file in this repository to your Makefile.config file.
 
-*Note*
+**Note**
 If your Python version is different with 3.7.6_1, you need to revise these two lines in Makefile.config.
 Change the bold parts accordingly.
 For example, If your Python version is 3.6, then python3.7m and 3.7.6_1 should be replaced with python3.6m and 3.6.
 
 ```
-PYTHON_LIBRARIES := boost_python3 *python3.7m*
-PYTHON_INCLUDE := /usr/local/Cellar/python/*3.7.6_1*/Frameworks/Python.framework/Versions/3.7/include/python3.7m 
+PYTHON_LIBRARIES := boost_python3 **python3.7m**
+PYTHON_INCLUDE := /usr/local/Cellar/python/**3.7.6_1**/Frameworks/Python.framework/Versions/3.7/include/python3.7m 
 			/usr/local/lib/python3.7/site-packages/numpy/core/include/numpy
 ```
       
